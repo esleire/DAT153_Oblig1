@@ -15,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
+        Henter alle knappene i main-actitivy for å sende brukeren
+        til ny activity
+         */
         Button addButton = findViewById(R.id.addButton);
         Button quizButton = findViewById(R.id.quizbutton);
         Button databaseButton = findViewById(R.id.databaseButton);
