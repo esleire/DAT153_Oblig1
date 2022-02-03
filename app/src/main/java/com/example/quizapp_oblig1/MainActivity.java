@@ -2,10 +2,11 @@ package com.example.quizapp_oblig1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.Button;
-import android.widget.ImageView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,43 +14,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    public void clickAddButton(View view) {
-        Button button = (Button) findViewById(R.id.addButton);
-        button.setOnClickListener(new View.OnClickListener(){
+        Button addButton = findViewById(R.id.addButton);
+        Button quizButton = findViewById(R.id.quizbutton);
+        Button databaseButton = findViewById(R.id.databaseButton);
 
-            @Override
-            public void onClick(View view) {
-                setContentView(R.layout.activity_addstudent);
+        addButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, AddStudentActivity.class)));
+        quizButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, QuizActivity.class)));
+        databaseButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, DatabaseActivity.class)));
 
 
-            }
-        });
 
     }
-    public void clickQuizButton(View view) {
-        Button button = (Button) findViewById(R.id.quizbutton);
-        button.setOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick(View view) {
-                setContentView(R.layout.activity_quiz);
-            }
-
-            });
-        }
-
-    public void clickDatabaseButton(View view) {
-        Button button = (Button) findViewById(R.id.quizbutton);
-        button.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                setContentView(R.layout.activity_database);
-            }
-
-        });
-    }
 
     }

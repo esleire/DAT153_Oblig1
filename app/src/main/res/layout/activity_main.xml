@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="Quiz"
         android:textSize="30sp"
-        android:onClick="clickQuizButton"
+
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="Add student"
         android:textSize="30sp"
-        android:onClick="clickAddButton"
+
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,6 @@
         android:layout_height="wrap_content"
         android:text="Database"
         android:textSize="30sp"
-        android:onClick="clickDatabaseButton"
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
