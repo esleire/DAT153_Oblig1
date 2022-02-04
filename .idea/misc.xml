@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/drawable/frede_background.xml" value="0.1" />
+        <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/drawable/magnus_background.xml" value="0.1145" />
         <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_addstudent.xml" value="0.1" />
         <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_database.xml" value="0.1" />
         <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_main.xml" value="0.1" />
