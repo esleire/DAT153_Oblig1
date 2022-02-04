@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizappOblig1">
+        <activity android:name=".AddStudentActivity" />
+        <activity android:name=".QuizActivity" />
+        <activity android:name=".DatabaseActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
