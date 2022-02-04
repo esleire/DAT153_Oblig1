@@ -4,10 +4,11 @@ import com.example.quizapp_oblig1.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class StudentList {
 
-    private ArrayList<Student> studentList = new ArrayList<Student>();
+    private List<Student> studentList = new ArrayList<>();
     public StudentList(){
 
         Student magnus = new Student("Magnus", R.drawable.magnus);
@@ -17,7 +18,7 @@ public class StudentList {
         studentList.addAll(Arrays.asList(new Student[] {magnus, frede, even}));
     }
 
-    public ArrayList<Student> getStudentList() {
+    public List<Student> getStudentList() {
         return studentList;
     }
 
