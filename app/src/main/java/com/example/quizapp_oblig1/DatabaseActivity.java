@@ -2,12 +2,17 @@ package com.example.quizapp_oblig1;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import utils.Student;
 import utils.StudentList;
@@ -21,18 +26,30 @@ public class DatabaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_database);
+        setContentView(R.layout.listview);
+        List<Student> listOfStudents = studentList.getStudentList();
 
+        List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 
-        ImageView imgview = findViewById(R.id.imageView);
-        TextView textView = findViewById(R.id.textView);
-
-        for(Student s : studentList.getStudentList()){
-
-            textView.setText(s.getName());
-            imgview.setImageResource(s.getImage());
-
+        for (Student s : listOfStudents) {
+            HashMap<String, String> hm = new HashMap<String, String>();
+            hm.put("listview_title", s.getName());
+            hm.put("listview_image", Integer.toString(s.getImage()));
+            aList.add(hm);
         }
+
+
+
+        String [] from = {"listview_title", "listview_image"};
+        int [] to = {R.id.listview_item_title, R.id.listview_image};
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.activity_database, from, to);
+
+        ListView androidListView = findViewById(R.id.list_view);
+        androidListView.setAdapter(simpleAdapter);
+
+
+
+
 
 
 
