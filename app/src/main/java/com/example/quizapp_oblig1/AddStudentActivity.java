@@ -73,6 +73,7 @@ public class AddStudentActivity extends AppCompatActivity {
 
                 Student s = new Student(name, picture);
                 studentList.addStudent(s);
+                startActivity(new Intent(AddStudentActivity.this, MainActivity.class));
 
             }
         }));

@@ -1,14 +1,19 @@
 package utils;
 
+import android.content.Intent;
+
 import com.example.quizapp_oblig1.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class StudentList {
+public class StudentList implements Serializable {
 
     private List<Student> studentList = new ArrayList<>();
+    Intent myIntent = new Intent();
+
     public StudentList(){
 
         Student magnus = new Student("Magnus", R.drawable.magnus);
