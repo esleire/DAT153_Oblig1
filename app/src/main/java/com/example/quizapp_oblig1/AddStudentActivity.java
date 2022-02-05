@@ -37,6 +37,9 @@ public class AddStudentActivity extends AppCompatActivity {
         Button addEntry = findViewById(R.id.addEntryButton);
         EditText nameInput = findViewById(R.id.nameInput);
 
+        /**
+         * Metode for å sette bildet som ble valgt i "gallery"
+         */
         ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
                 new ActivityResultCallback<Uri>() {
                     @Override
@@ -59,6 +62,9 @@ public class AddStudentActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageView);
 
 
+        /**
+         * onClickListener for å legge til ny student (Save entry)
+         */
 
         addEntry.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -66,6 +72,9 @@ public class AddStudentActivity extends AppCompatActivity {
                 String name = nameInput.getText().toString();
                 int picture = imageView.getDrawable().getAlpha();
 
+                /**
+                 * Sett default bilde dersom brukeren ikke velger et bilde
+                 */
                 if(picture == 0){
                     picture = R.drawable.default_pic;
                 }

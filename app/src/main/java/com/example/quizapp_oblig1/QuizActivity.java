@@ -57,10 +57,16 @@ public class QuizActivity extends AppCompatActivity {
         option2.setBackgroundColor(getResources().getColor(R.color.white));
         option3.setBackgroundColor(getResources().getColor(R.color.white));
 
+        /**
+         * Henter en tilfeldig student og setter bilde i quiz
+         */
 
         correctStudent = randomGenerator.generateCorrectStudent();
         imgview.setImageResource(correctStudent.getImage());
 
+        /**
+         * Shuffler listen for å gjøre rekkefølgen av alternativer tilfeldig
+         */
         Collections.shuffle(listOfStudents);
 
         text1.setText(listOfStudents.get(0).getName());
@@ -74,6 +80,11 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void onAnswer(View v, TextView text1, TextView text2, TextView text3, View option1, View option2, View option3, TextView result){
+
+        /**
+         * onClickListeneres for å sjekke hvilket alternativ som brukeren har valgt
+         * endrer bakgrunnsfarger ettersom svaret er riktig eller galt
+         */
 
         text1.setOnClickListener(view -> {
             if(correctStudent.getName().toLowerCase().equals(text1.getText().toString().toLowerCase())){
