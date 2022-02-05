@@ -4,10 +4,11 @@ import java.util.List;
 
 public class RandomGenerator {
 
-    private StudentList studentList = new StudentList();
-    private List<Student> listOfStudents = studentList.getStudentList();
 
-    public RandomGenerator(){
+    private List<Student> listOfStudents;
+
+    public RandomGenerator(List<Student> studentList){
+        this.listOfStudents = studentList;
 
     }
 
@@ -29,4 +30,5 @@ public class RandomGenerator {
     public List<Student> getListOfStudents() {
         return listOfStudents;
     }
+
 }
