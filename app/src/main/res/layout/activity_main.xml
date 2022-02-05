@@ -22,7 +22,7 @@
 
     <Button
         android:id="@+id/quizbutton"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:text="Quiz"
         android:textSize="30sp"
@@ -37,20 +37,21 @@
         />
     <Button
         android:id="@+id/addButton"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:text="Add student"
         android:textSize="30sp"
-
+        app:layout_constraintTop_toBottomOf="@+id/quizbutton"
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quizbutton"
+        app:layout_constraintVertical_bias="0.248"
+
 
         />
     <Button
         android:id="@+id/databaseButton"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:text="Database"
         android:textSize="30sp"
