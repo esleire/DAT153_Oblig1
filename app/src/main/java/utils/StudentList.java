@@ -12,7 +12,7 @@ import java.util.List;
 public class StudentList implements Serializable {
 
     private List<Student> studentList = new ArrayList<>();
-    Intent myIntent = new Intent();
+
 
     public StudentList(){
 
