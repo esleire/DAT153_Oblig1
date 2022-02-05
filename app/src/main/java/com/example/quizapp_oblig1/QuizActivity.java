@@ -48,6 +48,14 @@ public class QuizActivity extends AppCompatActivity {
 
         TextView result = findViewById(R.id.result);
 
+        /**
+         * Resetting backgroundcolor on next question
+         */
+
+        option1.setBackgroundColor(getResources().getColor(R.color.white));
+        option2.setBackgroundColor(getResources().getColor(R.color.white));
+        option3.setBackgroundColor(getResources().getColor(R.color.white));
+
 
         correctStudent = randomGenerator.generateCorrectStudent();
         imgview.setImageResource(correctStudent.getImage());
@@ -57,6 +65,14 @@ public class QuizActivity extends AppCompatActivity {
         text1.setText(listOfStudents.get(0).getName());
         text2.setText(listOfStudents.get(1).getName());
         text3.setText(listOfStudents.get(2).getName());
+
+        onAnswer(v, text1, text2, text3, option1, option2, option3, result);
+
+
+
+    }
+
+    public void onAnswer(View v, TextView text1, TextView text2, TextView text3, View option1, View option2, View option3, TextView result){
 
         text1.setOnClickListener(view -> {
             if(correctStudent.getName().toLowerCase().equals(text1.getText().toString().toLowerCase())){
@@ -87,7 +103,7 @@ public class QuizActivity extends AppCompatActivity {
         text3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(correctStudent.getName().toLowerCase().equals(text2.getText().toString().toLowerCase())){
+                if(correctStudent.getName().toLowerCase().equals(text3.getText().toString().toLowerCase())){
                     currentScore++;
                     option3.setBackgroundColor(getResources().getColor(R.color.green));
                 } else {
@@ -98,13 +114,6 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        /**
-         * Må sette correct til false på student når neste spørsmål laster
-         */
-
-    }
-
-    public void onAnswer(View v){
 
 
 
