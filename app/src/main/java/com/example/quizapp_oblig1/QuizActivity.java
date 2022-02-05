@@ -17,7 +17,7 @@ import utils.StudentList;
 public class QuizActivity extends AppCompatActivity {
     private StudentList studentList = new StudentList();
     private List<Student> listOfStudents = studentList.getStudentList();
-    private final RandomGenerator randomGenerator = new RandomGenerator();
+    private final RandomGenerator randomGenerator = new RandomGenerator(listOfStudents);
     private Student correctStudent;
     private int currentScore = 0, questionsAttempted = 0;
     /*
