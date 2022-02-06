@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         /*
         Henter alle knappene i main-actitivy for å sende brukeren
         til ny activity

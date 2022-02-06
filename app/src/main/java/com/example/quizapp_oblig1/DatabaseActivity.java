@@ -35,6 +35,7 @@ public class DatabaseActivity extends AppCompatActivity {
         List<Student> studentList = databaseHelper.getAllStudents();
 
         setUpdatedView(studentList);
+
         /**
          * Set listeners on sorting buttons
          */

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RandomGenerator {
 
-
+    private Student previousStudent;
     private List<Student> listOfStudents;
     private Student correctStudent;
 
@@ -16,7 +16,6 @@ public class RandomGenerator {
     }
 
     /**
-     *
      * @return list that contains three options, one with the correct name.
      */
     public List<Student> generateOptions(){
@@ -53,8 +52,18 @@ public class RandomGenerator {
     }
 
     public Student generateCorrectStudent(){
+        /**
+         * Trying to minimize same student showing up multiple times in a row.
+         * Todo: Implement method to prevent this from happening at all.
+         */
+        int index = generateRandomIndex();
 
-        this.correctStudent = listOfStudents.get(generateRandomIndex());
+        if(index == listOfStudents.indexOf(previousStudent)){
+            index = generateRandomIndex();
+        }
+
+        this.correctStudent = listOfStudents.get(index);
+        setPreviousStudent(correctStudent);
         this.correctStudent.setCorrectStudent(true);
         return this.correctStudent;
 
@@ -68,6 +77,13 @@ public class RandomGenerator {
 
     public List<Student> getListOfStudents() {
         return listOfStudents;
+    }
+
+    private void setPreviousStudent(Student s){
+        this.previousStudent = s;
+    }
+    private Student getPreviousStudent(){
+        return this.previousStudent;
     }
 
 }
