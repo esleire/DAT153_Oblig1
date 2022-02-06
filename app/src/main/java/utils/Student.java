@@ -4,21 +4,22 @@ public class Student {
 
     private String name;
     private int image;
-    private int id = 1;
+    private int id;
     private boolean correctStudent;
 
     public Student(String name, int image) {
         this.name = name;
         this.image = image;
         correctStudent = false;
-        generateId();
+    }
+    public Student(int id,String name, int image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        correctStudent = false;
     }
 
-    private void generateId(){
-        this.setId(id);
-        id++;
 
-    }
 
     public boolean getCorrectStudent(){
         return correctStudent;
@@ -49,5 +50,15 @@ public class Student {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", image=" + image +
+                ", id=" + id +
+                ", correctStudent=" + correctStudent +
+                '}';
     }
 }
