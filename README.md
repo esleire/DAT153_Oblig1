@@ -2,4 +2,6 @@
 
 Group no. 8
 
+Storage: Local database, SQLite
+
 Authors: Even Sleire, Magnus Gjøsund, Frede Berdal
