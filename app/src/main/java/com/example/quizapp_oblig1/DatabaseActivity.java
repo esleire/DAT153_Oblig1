@@ -15,22 +15,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import utils.SortingUtils;
 import utils.Student;
-import utils.StudentList;
+import utils.StudentDao;
 
 public class DatabaseActivity extends AppCompatActivity {
     /*
        Metode som setter nytt view ved opprettelse av klassen
      */
-    private StudentList studentList = new StudentList();
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview);
-        setUpdatedView();
 
+
+        StudentDao databaseHelper = new StudentDao(DatabaseActivity.this);
+        List<Student> studentList = databaseHelper.getAllStudents();
+
+        setUpdatedView(studentList);
 
         /**
          * Set listeners on sorting buttons
@@ -40,8 +44,9 @@ public class DatabaseActivity extends AppCompatActivity {
         sortAlpha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                studentList.sortedAlphabetically();
-                setUpdatedView();
+                SortingUtils sort = new SortingUtils(studentList);
+                sort.sortedAlphabetically();
+                setUpdatedView(sort.sortedList());
             }
         });
 
@@ -49,8 +54,9 @@ public class DatabaseActivity extends AppCompatActivity {
         sortReversed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                studentList.sortReversedAlphabetically();
-                setUpdatedView();
+                SortingUtils sort = new SortingUtils(studentList);
+                sort.sortReversedAlphabetically();
+                setUpdatedView(sort.sortedList());
             }
         });
 
@@ -67,8 +73,8 @@ public class DatabaseActivity extends AppCompatActivity {
      * Will be called after sorting buttons is clicked
      */
 
-    private void setUpdatedView(){
-        List<Student> listOfStudents = studentList.getStudentList();
+    private void setUpdatedView(List<Student> listOfStudents){
+
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 
         for (Student s : listOfStudents) {

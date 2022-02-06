@@ -13,30 +13,17 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class StudentList implements Serializable {
+public class SortingUtils {
 
-    private List<Student> studentList = new ArrayList<>();
+    private List<Student> studentList;
 
 
-    public StudentList(){
+    public SortingUtils(List<Student> studentList){
+        this.studentList = studentList;
 
-        Student magnus = new Student("Magnus", R.drawable.magnus);
-        Student frede = new Student("Frede", R.drawable.frede);
-        Student even = new Student("Even", R.drawable.even);
 
-        studentList.addAll(Arrays.asList(new Student[] {magnus, frede, even}));
     }
 
-    public List<Student> getStudentList() {
-        return studentList;
-    }
-
-
-    
-
-    public void addStudent(Student s){
-        this.studentList.add(s);
-    }
 
     public void sortedAlphabetically(){
 
@@ -53,6 +40,10 @@ public class StudentList implements Serializable {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void sortReversedAlphabetically(){
         this.studentList.sort(Comparator.comparing(Student::getName, Comparator.reverseOrder()));
+    }
+
+    public List<Student> sortedList(){
+        return this.studentList;
     }
 
 }
