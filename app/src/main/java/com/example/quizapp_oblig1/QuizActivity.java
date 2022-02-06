@@ -49,9 +49,9 @@ public class QuizActivity extends AppCompatActivity {
 
         TextView result = findViewById(R.id.result);
 
-        /**
-         * Resetting backgroundcolor on next question
-         */
+
+        //  Resetting backgroundcolor on next question
+
 
         option1.setBackgroundColor(getResources().getColor(R.color.white));
         option2.setBackgroundColor(getResources().getColor(R.color.white));
