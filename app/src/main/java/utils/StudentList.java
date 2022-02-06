@@ -1,6 +1,5 @@
 package utils;
 
-import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -17,7 +16,7 @@ import java.util.List;
 public class StudentList implements Serializable {
 
     private List<Student> studentList = new ArrayList<>();
-    Intent myIntent = new Intent();
+
 
     public StudentList(){
 
@@ -41,7 +40,8 @@ public class StudentList implements Serializable {
 
     public void sortedAlphabetically(){
 
-         Collections.sort(this.studentList, new Comparator<Student>() {
+        Collections.sort(this.studentList, new Comparator<Student>() {
+
             @Override
             public int compare(Student s1, Student s2) {
                 return s1.getName().compareTo(s2.getName());
@@ -54,8 +54,5 @@ public class StudentList implements Serializable {
     public void sortReversedAlphabetically(){
         this.studentList.sort(Comparator.comparing(Student::getName, Comparator.reverseOrder()));
     }
-
-
-
 
 }
