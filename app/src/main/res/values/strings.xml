@@ -9,4 +9,7 @@
     <string name="add_entry_heading">Add New Entry</string>
     <string name="save_entry">Save entry</string>
     <string name="add_image">Add image</string>
+    <string name="sort_A">SORT A->Z</string>
+    <string name="sort_Z">SORT Z->A</string>
+
 </resources>
