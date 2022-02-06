@@ -12,24 +12,22 @@ import java.util.List;
 
 import utils.RandomGenerator;
 import utils.Student;
-import utils.StudentList;
+import utils.StudentDao;
 
 public class QuizActivity extends AppCompatActivity {
-    private StudentList studentList = new StudentList();
-    private List<Student> listOfStudents = studentList.getStudentList();
-    private final RandomGenerator randomGenerator = new RandomGenerator(listOfStudents);
+
 
     private Student correctStudent;
     private int currentScore = 0, questionsAttempted = 0;
-    /*
-    Metode som setter nytt view ved opprettelse av klassen
-     */
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+
+
         View button = findViewById(R.id.nextbutton);
         onNext(button);
 
@@ -37,6 +35,10 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void onNext(View v){
+        StudentDao db = new StudentDao(QuizActivity.this);
+        List<Student> listOfStudents = db.getAllStudents();
+
+        RandomGenerator randomGenerator = new RandomGenerator(listOfStudents);
 
         ImageView imgview = findViewById(R.id.imageView);
         TextView text1 = findViewById(R.id.text1);
@@ -62,6 +64,7 @@ public class QuizActivity extends AppCompatActivity {
          */
 
         correctStudent = randomGenerator.generateCorrectStudent();
+        List<Student> optionList = randomGenerator.generateOptions();
         imgview.setImageResource(correctStudent.getImage());
 
         /**
@@ -69,9 +72,9 @@ public class QuizActivity extends AppCompatActivity {
          */
         Collections.shuffle(listOfStudents);
 
-        text1.setText(listOfStudents.get(0).getName());
-        text2.setText(listOfStudents.get(1).getName());
-        text3.setText(listOfStudents.get(2).getName());
+        text1.setText(optionList.get(0).getName());
+        text2.setText(optionList.get(1).getName());
+        text3.setText(optionList.get(2).getName());
 
         onAnswer(v, text1, text2, text3, option1, option2, option3, result);
 

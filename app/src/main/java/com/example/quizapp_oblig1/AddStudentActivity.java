@@ -17,12 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import utils.Student;
-import utils.StudentList;
+import utils.StudentDao;
 
 public class AddStudentActivity extends AppCompatActivity {
-
-    private StudentList studentList = new StudentList();
-
 
     /*
        Metode som setter nytt view ved opprettelse av klassen
@@ -70,17 +67,13 @@ public class AddStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = nameInput.getText().toString();
-                int picture = imageView.getDrawable().getAlpha();
-
-                /**
-                 * Sett default bilde dersom brukeren ikke velger et bilde
-                 */
-                if(picture == 0){
-                    picture = R.drawable.default_pic;
-                }
+                int picture = R.drawable.default_pic;
 
                 Student s = new Student(name, picture);
-                studentList.addStudent(s);
+                StudentDao databaseHelper = new StudentDao(AddStudentActivity.this);
+
+                databaseHelper.addStudent(s);
+
                 startActivity(new Intent(AddStudentActivity.this, MainActivity.class));
 
             }
