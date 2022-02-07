@@ -71,7 +71,7 @@ public class RandomGenerator {
 
     private int generateRandomIndex(){
 
-        return 0 + (int)(Math.random() * ((listOfStudents.size() - 0)));
+        return 0 + (int)(Math.random() * ((listOfStudents.size())));
 
     }
 
