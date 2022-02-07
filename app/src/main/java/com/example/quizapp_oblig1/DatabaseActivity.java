@@ -20,9 +20,6 @@ import utils.Student;
 import utils.StudentDao;
 
 public class DatabaseActivity extends AppCompatActivity {
-    /*
-       Metode som setter nytt view ved opprettelse av klassen
-     */
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -31,19 +28,19 @@ public class DatabaseActivity extends AppCompatActivity {
         setContentView(R.layout.listview);
 
 
+        // Getting student-list from DB
         StudentDao databaseHelper = new StudentDao(DatabaseActivity.this);
         List<Student> studentList = databaseHelper.getAllStudents();
 
         setUpdatedView(studentList);
 
-        /**
-         * Set listeners on sorting buttons
-         */
-
+        // Setting onClickListeners on the sorting buttons in database-view.
         Button sortAlpha = findViewById(R.id.sortAlphabetically);
         sortAlpha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // SortingUtils will take in the student list and have
+                // different sorting functions.
                 SortingUtils sort = new SortingUtils(studentList);
                 sort.sortedAlphabetically();
                 setUpdatedView(sort.sortedList());

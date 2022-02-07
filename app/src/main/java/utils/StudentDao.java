@@ -16,12 +16,13 @@ public class StudentDao extends SQLiteOpenHelper {
     public static final String STUDENT_TABLE = "STUDENT_TABLE";
 
     public StudentDao(@Nullable Context context) {
+
         super(context, "student.db", null, 1);
     }
 
-    /**
-     * onCreate vil bli kalt første gang det blir gjort noe med databasen
-     */
+
+    //  onCreate will be called the first time the object is referenced.
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement = "CREATE TABLE " + STUDENT_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, STUDENT_NAME TEXT, STUDENT_IMG INTEGER)";
@@ -29,14 +30,14 @@ public class StudentDao extends SQLiteOpenHelper {
 
     }
 
-    /**
-     * Blir kalt dersom database versjonsnummer endrer seg
-     */
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    // Method for adding a student to the database.
+    // only adding the img.id to the pictures from drawable folder.
 
     public boolean addStudent(Student student){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -79,6 +80,8 @@ public class StudentDao extends SQLiteOpenHelper {
         db.close();
         return returnList;
     }
+
+    // Method for deleting a student by id
 
     public boolean deleteStudent(int id){
 

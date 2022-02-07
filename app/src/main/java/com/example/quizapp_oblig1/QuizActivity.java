@@ -6,8 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Collections;
 import java.util.List;
 
 import utils.RandomGenerator;
@@ -26,18 +24,20 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-
-
         View button = findViewById(R.id.nextbutton);
-        onNext(button);
 
+        // onNext will be called everytime "NEXT-button" is clicked
+        onNext(button);
 
     }
 
     public void onNext(View v){
+
+        // Getting the list of students from local DB
         StudentDao db = new StudentDao(QuizActivity.this);
         List<Student> listOfStudents = db.getAllStudents();
 
+        // RandomGenerator will generate new student in the quiz and options
         RandomGenerator randomGenerator = new RandomGenerator(listOfStudents);
 
         ImageView imgview = findViewById(R.id.imageView);
@@ -54,28 +54,23 @@ public class QuizActivity extends AppCompatActivity {
 
         //  Resetting backgroundcolor on next question
 
-
         option1.setBackgroundColor(getResources().getColor(R.color.white));
         option2.setBackgroundColor(getResources().getColor(R.color.white));
         option3.setBackgroundColor(getResources().getColor(R.color.white));
 
-        /**
-         * Henter en tilfeldig student og setter bilde i quiz
-         */
 
         correctStudent = randomGenerator.generateCorrectStudent();
         List<Student> optionList = randomGenerator.generateOptions();
         imgview.setImageResource(correctStudent.getImage());
 
-        /**
-         * Shuffler listen for å gjøre rekkefølgen av alternativer tilfeldig
-         */
-        Collections.shuffle(listOfStudents);
 
+        // setting options
         text1.setText(optionList.get(0).getName());
         text2.setText(optionList.get(1).getName());
         text3.setText(optionList.get(2).getName());
 
+
+        // calling onAnswer when the user clicks a option
         onAnswer(v, text1, text2, text3, option1, option2, option3, result);
 
 
@@ -84,10 +79,9 @@ public class QuizActivity extends AppCompatActivity {
 
     public void onAnswer(View v, TextView text1, TextView text2, TextView text3, View option1, View option2, View option3, TextView result){
 
-        /**
-         * onClickListeneres for å sjekke hvilket alternativ som brukeren har valgt
-         * endrer bakgrunnsfarger ettersom svaret er riktig eller galt
-         */
+
+        // onClickListeneres for every option and changes background color if
+        // answer is right or wrong. Also setting score.
 
         text1.setOnClickListener(view -> {
             if(correctStudent.getName().toLowerCase().equals(text1.getText().toString().toLowerCase())){
@@ -130,9 +124,6 @@ public class QuizActivity extends AppCompatActivity {
         });
 
 
-
-
     }
-
 
 }

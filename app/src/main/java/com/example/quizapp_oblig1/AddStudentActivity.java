@@ -21,9 +21,6 @@ import utils.StudentDao;
 
 public class AddStudentActivity extends AppCompatActivity {
 
-    /*
-       Metode som setter nytt view ved opprettelse av klassen
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +44,7 @@ public class AddStudentActivity extends AppCompatActivity {
                 });
 
 
-         // Metode for å sette bildet som ble valgt i "gallery"
+         // Method for setting the picture choosen in the gallery.
         addPicture.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,9 +54,8 @@ public class AddStudentActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageView);
 
 
-        /**
-         * onClickListener for å legge til ny student (Save entry)
-         */
+
+        // onClickListener for the save-button.
 
         addEntry.setOnClickListener((new View.OnClickListener() {
             @Override
@@ -70,8 +66,12 @@ public class AddStudentActivity extends AppCompatActivity {
                 Student s = new Student(name, picture);
                 StudentDao databaseHelper = new StudentDao(AddStudentActivity.this);
 
+                // add student to DB
+                // we only store img.id's of pictures that exists in R.drawable.
+                // therefore we only set the default picture when adding a new entry.
                 databaseHelper.addStudent(s);
 
+                // Redirect back to main-menu after save
                 startActivity(new Intent(AddStudentActivity.this, MainActivity.class));
 
             }
