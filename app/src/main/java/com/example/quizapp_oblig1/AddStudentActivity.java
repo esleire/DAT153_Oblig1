@@ -34,9 +34,7 @@ public class AddStudentActivity extends AppCompatActivity {
         Button addEntry = findViewById(R.id.addEntryButton);
         EditText nameInput = findViewById(R.id.nameInput);
 
-        /**
-         * Metode for å sette bildet som ble valgt i "gallery"
-         */
+
         ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
                 new ActivityResultCallback<Uri>() {
                     @Override
@@ -49,7 +47,7 @@ public class AddStudentActivity extends AppCompatActivity {
                 });
 
 
-
+         // Metode for å sette bildet som ble valgt i "gallery"
         addPicture.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
