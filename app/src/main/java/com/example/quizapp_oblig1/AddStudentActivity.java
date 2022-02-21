@@ -2,13 +2,14 @@ package com.example.quizapp_oblig1;
 
 
 import android.content.Intent;
+
 import android.net.Uri;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -20,6 +21,8 @@ import utils.Student;
 import utils.StudentDao;
 
 public class AddStudentActivity extends AppCompatActivity {
+
+    private String img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class AddStudentActivity extends AppCompatActivity {
                         // Handle the returned Uri
                         ImageView imageView = findViewById(R.id.imageView);
                         imageView.setImageURI(uri);
+                        img = uri.toString();
 
                     }
                 });
@@ -61,9 +65,9 @@ public class AddStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = nameInput.getText().toString();
-                int picture = R.drawable.default_pic;
 
-                Student s = new Student(name, picture);
+
+                Student s = new Student(name, img);
                 StudentDao databaseHelper = new StudentDao(AddStudentActivity.this);
 
                 // add student to DB

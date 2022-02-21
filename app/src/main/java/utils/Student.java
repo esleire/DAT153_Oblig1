@@ -1,23 +1,25 @@
 package utils;
 
+
 public class Student {
 
     private String name;
-    private int image;
     private int id;
     private boolean correctStudent;
+    private String image;
 
-    public Student(String name, int image) {
+    public Student(int id, String name, String image) {
         this.name = name;
         this.image = image;
-        correctStudent = false;
-    }
-    public Student(int id,String name, int image) {
         this.id = id;
+        correctStudent = false;
+    }
+    public Student(String name, String image) {
         this.name = name;
         this.image = image;
         correctStudent = false;
     }
+
 
 
 
@@ -36,11 +38,11 @@ public class Student {
         this.name = name;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

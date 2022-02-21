@@ -1,5 +1,6 @@
 package com.example.quizapp_oblig1;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -61,7 +62,7 @@ public class QuizActivity extends AppCompatActivity {
 
         correctStudent = randomGenerator.generateCorrectStudent();
         List<Student> optionList = randomGenerator.generateOptions();
-        imgview.setImageResource(correctStudent.getImage());
+        imgview.setImageURI(Uri.parse(correctStudent.getImage()));
 
 
         // setting options

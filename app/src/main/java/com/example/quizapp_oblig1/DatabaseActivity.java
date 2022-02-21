@@ -1,6 +1,7 @@
 package com.example.quizapp_oblig1;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,8 @@ public class DatabaseActivity extends AppCompatActivity {
 
         // Getting student-list from DB
         StudentDao databaseHelper = new StudentDao(DatabaseActivity.this);
+
+
         List<Student> studentList = databaseHelper.getAllStudents();
 
         setUpdatedView(studentList);
@@ -72,13 +75,15 @@ public class DatabaseActivity extends AppCompatActivity {
 
     private void setUpdatedView(List<Student> listOfStudents){
 
+
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 
         for (Student s : listOfStudents) {
             HashMap<String, String> hm = new HashMap<String, String>();
             hm.put("listview_title", s.getName());
-            hm.put("listview_image", Integer.toString(s.getImage()));
+            hm.put("listview_image", s.getImage());
             aList.add(hm);
+
         }
 
 

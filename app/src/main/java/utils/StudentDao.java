@@ -5,9 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import androidx.annotation.Nullable;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +28,7 @@ public class StudentDao extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement = "CREATE TABLE " + STUDENT_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, STUDENT_NAME TEXT, STUDENT_IMG INTEGER)";
+        String createTableStatement = "CREATE TABLE " + STUDENT_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, STUDENT_NAME TEXT, STUDENT_IMG TEXT)";
         db.execSQL(createTableStatement);
 
     }
@@ -42,15 +45,21 @@ public class StudentDao extends SQLiteOpenHelper {
     public boolean addStudent(Student student){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+
+
+
         cv.put("STUDENT_NAME", student.getName());
         cv.put("STUDENT_IMG", student.getImage());
 
         long insert = db.insert(STUDENT_TABLE,null , cv);
         if(insert == -1){
+
             return false;
         }
+        System.out.println("fikk lagt til!");
         return true;
     }
+
 
     public List<Student> getAllStudents(){
 
@@ -67,10 +76,10 @@ public class StudentDao extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             // If results, loop through the results and add to list.
 
-            while(cursor.moveToNext()){
+            while(cursor.moveToNext()) {
                 int studentID = cursor.getInt(0);
                 String studentName = cursor.getString(1);
-                int studentImg = cursor.getInt(2);
+                String studentImg = cursor.getString(2);
 
                 Student newStudent = new Student(studentID, studentName, studentImg);
                 returnList.add(newStudent);
@@ -91,9 +100,31 @@ public class StudentDao extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
 
         if(cursor.moveToFirst()){
+            cursor.close();
+            db.close();
             return true;
         }
+        cursor.close();
+        db.close();
         return false;
 
+    }
+
+
+    public boolean deleteAll(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + STUDENT_TABLE;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()){
+            cursor.close();
+            db.close();
+            return true;
+
+        }
+        cursor.close();
+        db.close();
+        return false;
     }
 }
