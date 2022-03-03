@@ -1,28 +1,40 @@
 package com.example.quizapp_oblig1;
 
 
+import android.app.Activity;
 import android.content.Intent;
 
-import android.net.Uri;
+import android.graphics.Bitmap;
+
 import android.os.Bundle;
 
+import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import utils.DataConverter;
 import utils.Student;
-import utils.StudentDao;
+import utils.StudentDAO;
+import utils.StudentDatabase;
 
 public class AddStudentActivity extends AppCompatActivity {
 
-    private String img;
+
+    ImageView imageView;
+    Bitmap bmpImage;
+    EditText name;
+
+    StudentDAO studentDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,58 +42,52 @@ public class AddStudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addstudent);
 
 
-        Button addPicture = findViewById(R.id.addImage);
-        Button addEntry = findViewById(R.id.addEntryButton);
-        EditText nameInput = findViewById(R.id.nameInput);
+        name = findViewById(R.id.nameInput);
+        bmpImage = null;
+        imageView = findViewById(R.id.imageView);
+
+        studentDAO = StudentDatabase.getDBInstance(this).studentDAO();
 
 
-        ActivityResultLauncher<String> mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(),
-                new ActivityResultCallback<Uri>() {
-                    @Override
-                    public void onActivityResult(Uri uri) {
-                        // Handle the returned Uri
-                        ImageView imageView = findViewById(R.id.imageView);
-                        imageView.setImageURI(uri);
-                        img = uri.toString();
 
+    }
+    ActivityResultLauncher<Intent> takePictureResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+
+                        Intent data = result.getData();
+
+                        bmpImage = (Bitmap) data.getExtras().get("data");
+                        imageView.setImageBitmap(bmpImage);
                     }
-                });
+                }
+            });
 
+    public void takePicture(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        takePictureResultLauncher.launch(intent);
+    }
 
-         // Method for setting the picture choosen in the gallery.
-        addPicture.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mGetContent.launch("image/*");
-            }
-        }));
-        ImageView imageView = findViewById(R.id.imageView);
+    public void saveStudent(View view) {
 
+        if(name.getText().toString().isEmpty() || bmpImage == null){
+            Toast.makeText(this, "Missing some userdata",  Toast.LENGTH_SHORT).show();
 
+        } else {
+            Student student = new Student();
+            student.setName(name.getText().toString());
+            student.setImage(DataConverter.convertImage2Byte(bmpImage));
+            studentDAO.insertUser(student);
+            Toast.makeText(
+                    this,
+                    "Successfully saved",
+                    Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(AddStudentActivity.this, MainActivity.class));
 
-        // onClickListener for the save-button.
-
-        addEntry.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = nameInput.getText().toString();
-
-
-                Student s = new Student(name, img);
-                StudentDao databaseHelper = new StudentDao(AddStudentActivity.this);
-
-                // add student to DB
-                // we only store img.id's of pictures that exists in R.drawable.
-                // therefore we only set the default picture when adding a new entry.
-                databaseHelper.addStudent(s);
-
-                // Redirect back to main-menu after save
-                startActivity(new Intent(AddStudentActivity.this, MainActivity.class));
-
-            }
-        }));
-
-
+        }
     }
 
     }

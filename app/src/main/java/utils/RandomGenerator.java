@@ -54,7 +54,6 @@ public class RandomGenerator {
     public Student generateCorrectStudent(){
         /**
          * Trying to minimize same student showing up multiple times in a row.
-         * Todo: Implement method to prevent this from happening at all.
          */
         int index = generateRandomIndex();
 

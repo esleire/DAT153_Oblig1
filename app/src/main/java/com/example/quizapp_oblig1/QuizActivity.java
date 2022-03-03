@@ -1,23 +1,33 @@
 package com.example.quizapp_oblig1;
 
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import java.util.List;
 
+
+import utils.DataConverter;
 import utils.RandomGenerator;
 import utils.Student;
-import utils.StudentDao;
+import utils.StudentDAO;
+import utils.StudentDatabase;
 
 public class QuizActivity extends AppCompatActivity {
 
 
     private Student correctStudent;
     private int currentScore = 0, questionsAttempted = 0;
+    StudentDAO studentDAO;
+    private QuizViewModel model;
+    TextView result;
 
 
     @Override
@@ -26,17 +36,48 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         View button = findViewById(R.id.nextbutton);
+        result = findViewById(R.id.result);
+
+        model = new ViewModelProvider(this).get(QuizViewModel.class);
+
+        final Observer<String> scoreObserver = new Observer<String>() {
+
+            @Override
+            public void onChanged(@Nullable final String score) {
+
+               // Hent hjelpemetode
+            }
+        };
+
+        final Observer<String> attemptObserver = new Observer<String>() {
+
+            @Override
+            public void onChanged(@Nullable final String attempt) {
+
+                // Hent hjelpemetode
+            }
+        };
+
+
 
         // onNext will be called everytime "NEXT-button" is clicked
-        onNext(button);
+        onNext(button, result);
 
     }
 
-    public void onNext(View v){
+    private void updateScore(Student s, TextView answer) {
 
-        // Getting the list of students from local DB
-        StudentDao db = new StudentDao(QuizActivity.this);
-        List<Student> listOfStudents = db.getAllStudents();
+        if(s.getName().toLowerCase().equals(answer.getText().toString().toLowerCase())) {
+            currentScore++;
+        }
+        questionsAttempted++;
+    }
+
+    public void onNext(View v, TextView result){
+
+        studentDAO = StudentDatabase.getDBInstance(this).studentDAO();
+
+        List<Student> listOfStudents = studentDAO.getAllUsers();
 
         // RandomGenerator will generate new student in the quiz and options
         RandomGenerator randomGenerator = new RandomGenerator(listOfStudents);
@@ -50,7 +91,7 @@ public class QuizActivity extends AppCompatActivity {
         View option2 = findViewById(R.id.option2);
         View option3 = findViewById(R.id.option3);
 
-        TextView result = findViewById(R.id.result);
+
 
 
         //  Resetting backgroundcolor on next question
@@ -62,7 +103,7 @@ public class QuizActivity extends AppCompatActivity {
 
         correctStudent = randomGenerator.generateCorrectStudent();
         List<Student> optionList = randomGenerator.generateOptions();
-        imgview.setImageURI(Uri.parse(correctStudent.getImage()));
+        imgview.setImageBitmap(DataConverter.convertByteArray2Image(correctStudent.getImage()));
 
 
         // setting options
@@ -92,7 +133,11 @@ public class QuizActivity extends AppCompatActivity {
                 option1.setBackgroundColor(getResources().getColor(R.color.red));
             }
             questionsAttempted++;
-            result.setText(currentScore + "/" + questionsAttempted);
+            String score = Integer.toString(currentScore);
+            String attempt = Integer.toString(questionsAttempted);
+            model.getCurrentScore().setValue(score);
+            model.getQuestionsAttempted().setValue(attempt);
+            result.setText(model.getCurrentScore().toString() + "/" + model.getQuestionsAttempted().toString());
 
         });
 
@@ -106,7 +151,12 @@ public class QuizActivity extends AppCompatActivity {
                     option2.setBackgroundColor(getResources().getColor(R.color.red));
                 }
                 questionsAttempted++;
-                result.setText(currentScore + "/" + questionsAttempted);
+                String score = Integer.toString(currentScore);
+                String attempt = Integer.toString(questionsAttempted);
+                model.getCurrentScore().setValue(score);
+                model.getQuestionsAttempted().setValue(attempt);
+                result.setText(model.getCurrentScore().toString() + "/" + model.getQuestionsAttempted().toString());
+
             }
         });
 
@@ -120,7 +170,12 @@ public class QuizActivity extends AppCompatActivity {
                     option3.setBackgroundColor(getResources().getColor(R.color.red));
                 }
                 questionsAttempted++;
-                result.setText(currentScore + "/" + questionsAttempted);
+                String score = Integer.toString(currentScore);
+                String attempt = Integer.toString(questionsAttempted);
+                model.getCurrentScore().setValue(score);
+                model.getQuestionsAttempted().setValue(attempt);
+                result.setText(model.getCurrentScore().toString() + "/" + model.getQuestionsAttempted().toString());
+
             }
         });
 
