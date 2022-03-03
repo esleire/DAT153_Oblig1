@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizappOblig1">
         <activity android:name=".AddStudentActivity" />
-        <activity android:name=".QuizActivity" />
+        <activity android:name=".QuizActivity"
+            android:configChanges="orientation|screenSize"/>
         <activity android:name=".DatabaseActivity" />
         <activity
             android:name=".MainActivity"

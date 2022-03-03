@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel;
 public class QuizViewModel extends ViewModel {
 
     private MutableLiveData<String> currentScore;
-    private MutableLiveData<String> questionsAttempted;
 
 
     public MutableLiveData<String> getCurrentScore() {
@@ -16,10 +15,5 @@ public class QuizViewModel extends ViewModel {
         }
         return currentScore;
     }
-    public MutableLiveData<String> getQuestionsAttempted() {
-        if (questionsAttempted == null) {
-            questionsAttempted = new MutableLiveData<String>();
-        }
-        return questionsAttempted;
-    }
+
 }
