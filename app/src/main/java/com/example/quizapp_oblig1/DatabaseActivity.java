@@ -32,7 +32,7 @@ public class DatabaseActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.userRecyclerView);
 
         studentDAO = StudentDatabase.getDBInstance(this).studentDAO();
-        StudentRecycler studentRecycler = new StudentRecycler(studentDAO.getAllUsers());
+        StudentRecycler studentRecycler = new StudentRecycler(studentDAO.getAllUsers(), this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(studentRecycler);
@@ -47,7 +47,7 @@ public class DatabaseActivity extends AppCompatActivity {
 
         SortingUtils sort = new SortingUtils(studentList);
         sort.sortedAlphabetically();
-        StudentRecycler studentRecycler = new StudentRecycler(sort.sortedList());
+        StudentRecycler studentRecycler = new StudentRecycler(sort.sortedList(), this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(studentRecycler);
     }
@@ -60,7 +60,7 @@ public class DatabaseActivity extends AppCompatActivity {
 
         SortingUtils sort = new SortingUtils(studentList);
         sort.sortReversedAlphabetically();
-        StudentRecycler studentRecycler = new StudentRecycler(sort.sortedList());
+        StudentRecycler studentRecycler = new StudentRecycler(sort.sortedList(), this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(studentRecycler);
     }

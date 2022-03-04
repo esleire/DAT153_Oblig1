@@ -5,8 +5,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/purple_200"
-    tools:context=".QuizActivity">
+    tools:context=".QuizActivity"
+    android:id="@+id/quizActivity"
     >
+
 
 
     <TextView
@@ -63,7 +65,6 @@
             android:layout_height="match_parent"
             android:textSize="40sp"
             android:clickable="true"
-            android:onClick="onAnswer"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:gravity="center_horizontal"
@@ -92,7 +93,7 @@
             android:layout_height="match_parent"
             android:textSize="40sp"
             android:clickable="true"
-            android:onClick="onAnswer"
+
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:gravity="center_horizontal"
@@ -120,7 +121,7 @@
             android:layout_height="match_parent"
             android:textSize="40sp"
             android:clickable="true"
-            android:onClick="onAnswer"
+
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:gravity="center_horizontal"
@@ -134,7 +135,6 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginLeft="300dp"
-        android:onClick="onNext"
         android:text="@string/next"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"

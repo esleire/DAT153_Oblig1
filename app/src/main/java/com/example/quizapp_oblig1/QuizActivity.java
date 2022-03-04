@@ -1,6 +1,7 @@
 package com.example.quizapp_oblig1;
 
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,8 +37,8 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
 
+        setContentView(R.layout.activity_quiz);
         onNext = findViewById(R.id.nextbutton);
         resultView = findViewById(R.id.result);
         result = new Result();
@@ -53,8 +54,6 @@ public class QuizActivity extends AppCompatActivity {
             }
         };
         model.getCurrentScore().observe(this, scoreObserver);
-
-
 
         studentDAO = StudentDatabase.getDBInstance(this).studentDAO();
 
@@ -93,6 +92,7 @@ public class QuizActivity extends AppCompatActivity {
         text3.setText(optionList.get(2).getName());
 
         onAnswer(onNext, text1, text2, text3, option1, option2, option3, correctStudent, result, model);
+
 
 
         // onNext will be called everytime "NEXT-button" is clicked
@@ -142,6 +142,28 @@ public class QuizActivity extends AppCompatActivity {
         });
 
     }
+
+    /*
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(R.layout.activity_quiz);
+        } else {
+
+            setContentView(R.layout.activity_quiz);
+        }
+
+    }
+
+    
+     */
+
+
+
+
 
     private boolean updateScore(Student s, TextView answer, Result result, QuizViewModel model) {
 

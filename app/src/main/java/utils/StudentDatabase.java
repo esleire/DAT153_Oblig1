@@ -22,7 +22,7 @@ public abstract class StudentDatabase extends RoomDatabase {
             studentDB = Room.databaseBuilder(
                     context.getApplicationContext(),
                     StudentDatabase.class,
-                    "oblig1"
+                    "oblig1-quiz"
             ).allowMainThreadQueries().build();
         }
         return studentDB;
