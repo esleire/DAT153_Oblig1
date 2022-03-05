@@ -16,6 +16,7 @@ import android.provider.Telephony;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
+import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,8 +33,11 @@ public class MainActivityTest {
 
         onView(withId(R.id.quizbutton)).perform(click());
         onView(withId(R.id.quizActivity)).check(matches(isDisplayed()));
+    }
 
-
+    @After
+    public void after(){
+        mActivityRule.getScenario().close();
     }
 
 

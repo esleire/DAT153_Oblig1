@@ -34,7 +34,8 @@ public class AddStudentActivityTest {
 
         onView(withId(R.id.nameInput)).perform(typeText("Frede"));
         closeSoftKeyboard();
-        onView(withId(R.id.imageView)).perform()
+        onView(withId(R.id.imageView)).perform(click());
+
 
 
     }

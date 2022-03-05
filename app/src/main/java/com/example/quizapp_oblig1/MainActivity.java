@@ -26,35 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-/*
-        studentDAO = StudentDatabase.getDBInstance(this).studentDAO();
-
-        Student e = new Student();
-
-        e.setName("Even");
-        Bitmap even = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.even);
-        e.setImage(DataConverter.convertImage2Byte(even));
-
-        studentDAO.insertUser(e);
-
-        Student m = new Student();
-
-        m.setName("Magnus");
-        Bitmap magnus = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.magnus);
-        m.setImage(DataConverter.convertImage2Byte(magnus));
-
-        studentDAO.insertUser(m);
-
-        Student f = new Student();
-
-        f.setName("Frede");
-        Bitmap frede = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.frede);
-        f.setImage(DataConverter.convertImage2Byte(frede));
-
-        studentDAO.insertUser(f);
-
-*/
-
 
         // Setting onClickListeners on every button in main-menu.
         // sending the user to the correct activity after click.
