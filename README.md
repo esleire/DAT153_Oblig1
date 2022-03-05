@@ -4,10 +4,13 @@ Group no. 8
 
 Storage: Android Rooms 
 
+<h1>Authors:</h1>
+
+Even Sleire, Magnus Gjøsund, Frede Berdal
 
 
 
-Testing using Gradlew: 
+<h1>Testing using Gradlew:</h1> 
 
 running command: gradlew.bat cAT 
 
@@ -15,7 +18,6 @@ running command: gradlew.bat cAT
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Test results - Test Summary</title>
 </head>
 <body>
 <div id="content">
@@ -198,5 +200,3 @@ running command: gradlew.bat cAT
 </body>
 
 
-
-Authors: Even Sleire, Magnus Gjøsund, Frede Berdal
