@@ -27,7 +27,7 @@ public abstract class StudentDatabase extends RoomDatabase {
             studentDB = Room.databaseBuilder(
                     context.getApplicationContext(),
                     StudentDatabase.class,
-                    "oblig2-quiz"
+                    "oblig2-quiz1"
             ).allowMainThreadQueries().build();
 
             Student e = new Student();

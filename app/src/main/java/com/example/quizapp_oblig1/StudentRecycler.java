@@ -1,13 +1,15 @@
 package com.example.quizapp_oblig1;
 
 import android.app.Activity;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.RoomDatabase;
+
 
 import java.util.List;
 
@@ -52,6 +54,15 @@ public class StudentRecycler extends RecyclerView.Adapter<StudentViewHolder> {
             public void onClick(View view) {
 
                 database.deleteUser(student);
+
+                Toast.makeText(
+                        context,
+                        "Successfully deleted " + student.getName(),
+                        Toast.LENGTH_SHORT).show();
+                context.finish();
+                context.startActivity(context.getIntent());
+
+
 
             }
         } );
