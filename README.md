@@ -166,3 +166,8 @@ running command: gradlew.bat cAT
 </div>
 </div>
 </body>
+  
+<h2>APK's used</h2>
+ Gradle uses the "app-debug-androidTest.apk"
+ In this APK, gradle will find all the relevant test-classes. 
+  
