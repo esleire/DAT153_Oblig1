@@ -24,19 +24,23 @@
 
     <TextView
         android:id="@+id/result"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:textSize="25sp"
-        android:layout_marginLeft="330dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,15 +49,16 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/option1"
         app:cardCornerRadius="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
+        app:layout_constraintVertical_bias="0.42"
+        >
 
         <TextView
             android:id="@+id/text1"
@@ -62,7 +67,7 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:gravity="center_horizontal"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:clickable="true"
             android:focusable="true"
 
@@ -73,21 +78,21 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/option2"
         app:cardCornerRadius="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65">
+        app:layout_constraintVertical_bias="0.60">
 
         <TextView
             android:id="@+id/text2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:clickable="true"
             android:focusable="true"
             android:layout_centerHorizontal="true"
@@ -100,8 +105,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/option3"
         app:cardCornerRadius="65dp"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp"
 
@@ -109,13 +114,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintVertical_bias="0.80"
+
         >
         <TextView
             android:id="@+id/text3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="40sp"
+            android:textSize="30sp"
             android:clickable="true"
             android:focusable="true"
             android:layout_centerHorizontal="true"
@@ -126,15 +132,15 @@
     </androidx.cardview.widget.CardView>
     <Button
         android:id="@+id/nextbutton"
-        android:layout_width="200dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         android:text="@string/next"
         android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="@id/option3"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintVertical_bias="0.7"
 
 
         />

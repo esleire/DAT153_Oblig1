@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
         // Setting onClickListeners on every button in main-menu.
         // sending the user to the correct activity after click.
         Button addButton = findViewById(R.id.addButton);
