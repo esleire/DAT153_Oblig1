@@ -171,3 +171,15 @@ running command: gradlew.bat cAT
  Gradle uses the "app-debug-androidTest.apk"
  In this APK, gradle will find all the relevant test-classes. 
   
+<h2>adb commands used</h2>
+ To install the tests: 
+ adb am instrument 
+ 
+ To run the entire test-package: 
+ adb shell am instrument -w com.example.quizapp_oblig1.tests/android.support.test.runner.AndroidJUnitRunner
+  
+ To run on test-class at a time (example: MainActivityTest): 
+ adb shell am instrument -w  \
+ -e class com.example.quizapp_oblig1.tests.MainActivityTest \
+ com.example.quizapp_oblig1.tests/android.support.test.runner.AndroidJUnitRunner
+ 
