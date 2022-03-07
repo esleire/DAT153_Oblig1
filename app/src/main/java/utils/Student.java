@@ -1,26 +1,22 @@
 package utils;
 
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "Students")
 public class Student {
+    @PrimaryKey(autoGenerate = true)
+    int id;
 
-    private String name;
-    private int id;
-    private boolean correctStudent;
-    private String image;
+    @ColumnInfo(name = "name")
+    String name;
 
-    public Student(int id, String name, String image) {
-        this.name = name;
-        this.image = image;
-        this.id = id;
-        correctStudent = false;
-    }
-    public Student(String name, String image) {
-        this.name = name;
-        this.image = image;
-        correctStudent = false;
-    }
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    byte [] image;
 
-
+    boolean correctStudent;
 
 
     public boolean getCorrectStudent(){
@@ -38,11 +34,11 @@ public class Student {
         this.name = name;
     }
 
-    public String getImage() {
+    public byte [] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte [] image) {
         this.image = image;
     }
 
@@ -54,13 +50,5 @@ public class Student {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", image=" + image +
-                ", id=" + id +
-                ", correctStudent=" + correctStudent +
-                '}';
-    }
+
 }

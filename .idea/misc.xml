@@ -5,11 +5,15 @@
       <map>
         <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/drawable/frede_background.xml" value="0.1" />
         <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/drawable/magnus_background.xml" value="0.1145" />
+        <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout-land/activity_quiz.xml" value="0.1" />
         <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_addstudent.xml" value="0.18857142857142858" />
-        <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_database.xml" value="0.18857142857142858" />
+        <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_database.xml" value="0.1" />
         <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_main.xml" value="0.2857142857142857" />
-        <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_quiz.xml" value="0.2857142857142857" />
+        <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_quiz.xml" value="0.1" />
+        <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_quiz_land.xml" value="0.1" />
+        <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/activity_show_students.xml" value="0.1" />
         <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/listview.xml" value="0.40896739130434784" />
+        <entry key="..\:/Users/T490/AndroidStudioProjects/QuizappOblig1/app/src/main/res/layout/student_item_layout.xml" value="0.1" />
       </map>
     </option>
   </component>

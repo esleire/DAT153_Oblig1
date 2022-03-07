@@ -1,23 +1,23 @@
 package com.example.quizapp_oblig1;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import android.widget.Button;
 
+import utils.DataConverter;
 import utils.Student;
-import utils.StudentDao;
+import utils.StudentDAO;
+import utils.StudentDatabase;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    StudentDAO studentDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
