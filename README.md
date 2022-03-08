@@ -178,7 +178,7 @@ running command: gradlew.bat cAT
  To run the entire test-package: 
  adb shell am instrument -w com.example.quizapp_oblig1.tests/android.support.test.runner.AndroidJUnitRunner
   
- To run on test-class at a time (example: MainActivityTest): 
+ To run one test-class at a time (example: MainActivityTest): 
  adb shell am instrument -w  \
  -e class com.example.quizapp_oblig1.tests.MainActivityTest \
  com.example.quizapp_oblig1.tests/android.support.test.runner.AndroidJUnitRunner
