@@ -190,8 +190,6 @@ public class QuizActivity extends AppCompatActivity {
             } else {
                 option1.setBackgroundColor(getResources().getColor(R.color.red));
             }
-
-
         });
 
         text2.setOnClickListener(new View.OnClickListener() {

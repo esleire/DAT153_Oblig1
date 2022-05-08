@@ -27,32 +27,10 @@ public abstract class StudentDatabase extends RoomDatabase {
             studentDB = Room.databaseBuilder(
                     context.getApplicationContext(),
                     StudentDatabase.class,
-                    "oblig2-quiz1"
+                    "oblig2-quizapp"
             ).allowMainThreadQueries().build();
 
-            Student e = new Student();
 
-            e.setName("Even");
-            Bitmap even = BitmapFactory.decodeResource(context.getResources(), R.drawable.even);
-            e.setImage(DataConverter.convertImage2Byte(even));
-
-            studentDB.studentDAO().insertUser(e);
-
-            Student m = new Student();
-
-            m.setName("Magnus");
-            Bitmap magnus = BitmapFactory.decodeResource(context.getResources(), R.drawable.magnus);
-            m.setImage(DataConverter.convertImage2Byte(magnus));
-
-            studentDB.studentDAO().insertUser(m);
-
-            Student f = new Student();
-
-            f.setName("Frede");
-            Bitmap frede = BitmapFactory.decodeResource(context.getResources(), R.drawable.frede);
-            f.setImage(DataConverter.convertImage2Byte(frede));
-
-            studentDB.studentDAO().insertUser(f);
         }
         return studentDB;
     }
